@@ -48,3 +48,19 @@ The variables include:
 •	random failures (RNF): each process has a chance of 0,1 % to fail regardless of its process parameters. This is the case for only 5 datapoints, less than could be expected for 10,000 datapoints in our dataset.
 
 If at least one of the above failure modes is true, the process fails and the 'machine failure' label is set to 1. It is therefore not transparent to the machine learning method, which of the failure modes has caused the process to fail.
+
+# Steps Followed 
+Data collection
+
+Data exploration, visualization, and processing
+
+Dimension reduction and variable selection
+
+Exploratory Data Analysis
+
+Model exploration and model selection
+
+Model performance evaluation
+
+Performance visualization
+ 
