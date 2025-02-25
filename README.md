@@ -1,66 +1,59 @@
-# Predictive-Machinery-Analysis-ML
-# Problem Setting: 
-Today, all businesses depend on machines, and we want them to work at their best for a long period. In most cases, Predictive maintenance can be used to maximize the efficiency of machinery. It helps to minimize unanticipated breakdowns as we can fix the machines just in time as we monitor and predict their status. Here, the problem is defined within the context of a manufacturing process, where the machine used in the process can fail due to various reasons. The goal is to understand the factors that contribute to machine failure and to predict when it is likely to occur.
+# Predictive Machinery Analysis Using Machine Learning
 
-# Problem Definition: 
-The specific problem being addressed is to identify the factors that contribute to machine failure and to predict when it is likely to occur. The following questions need to be answered through data analytics:
+## Overview
+Predictive maintenance is crucial for businesses that rely on machinery. It helps prevent unanticipated breakdowns by monitoring machine status and predicting failures before they occur. This project focuses on analyzing a manufacturing process where machine failures can happen due to various reasons. The goal is to identify contributing factors and predict failures accurately.
 
-•	What are the factors that contribute to machine failure?
+## Problem Definition
+This project aims to answer the following key questions through data analytics:
+- What factors contribute to machine failure?
+- How can we predict when a machine is likely to fail?
+- Which failure mode is the most likely to occur?
 
-•	How can we predict when a machine is likely to fail?
+## Data Sources
+The dataset used in this project is provided by Stephan Matzka, School of Engineering - Technology and Life, Hochschule für Technik und Wirtschaft Berlin. It is publicly available at:
+[AI4I 2020 Predictive Maintenance Dataset](https://archive.ics.uci.edu/ml/datasets/AI4I+2020+Predictive+Maintenance+Dataset)
 
-•	Which failure mode is the most likely to occur?
+## Data Description
+The dataset consists of 10,000 records with 14 features, including:
+- **UID:** Unique identifier (1 to 10,000)
+- **Product ID:** Quality variant (L = Low, M = Medium, H = High) with a serial number
+- **Air Temperature [K]:** Normalized with a standard deviation of 2 K around 300 K
+- **Process Temperature [K]:** Normalized with a standard deviation of 1 K, added to air temperature plus 10 K
+- **Rotational Speed [rpm]:** Derived from power and overlaid with noise
+- **Torque [Nm]:** Normally distributed around 40 Nm (std dev = 10 Nm)
+- **Tool Wear [min]:** Accumulates wear based on product quality (H/M/L = 5/3/2 minutes per process)
+- **Machine Failure Label:** Binary indicator (1 = failure, 0 = normal operation)
 
-# Data Sources: 
-Stephan Matzka, School of Engineering - Technology and Life, Hochschule fÃ¼r Technik und Wirtschaft Berlin, 12459 Berlin, Germany, stephan.matzka '@' htw-berlin.de
-https://archive.ics.uci.edu/ml/datasets/AI4I+2020+Predictive+Maintenance+Dataset#
+## Failure Modes
+Machine failure consists of five independent failure types:
+1. **Tool Wear Failure (TWF):** Occurs between 200-240 mins of tool usage (120 instances in dataset)
+2. **Heat Dissipation Failure (HDF):** Happens when the air-to-process temperature difference is below 8.6 K and rotational speed is below 1380 rpm (115 instances)
+3. **Power Failure (PWF):** Occurs when power output (torque * speed) is below 3500 W or above 9000 W (95 instances)
+4. **Overstrain Failure (OSF):** If tool wear * torque exceeds predefined limits based on product quality (98 instances)
+5. **Random Failures (RNF):** Each process has a 0.1% failure probability, occurring randomly (5 instances)
 
+A machine failure is recorded if at least one of these conditions is met.
 
-# Data Description: 
-The dataset consists of 10,000 data points stored as rows with 14 features in columns. 
-The variables include:
-•	UID: unique identifier ranging from 1 to 10,000
+## Methodology
+The following steps outline the project workflow:
+1. **Data Collection** – Obtain and organize raw dataset
+2. **Data Exploration & Processing** – Clean, visualize, and understand dataset characteristics
+3. **Dimensionality Reduction & Feature Selection** – Select important features for modeling
+4. **Exploratory Data Analysis (EDA)** – Identify trends and correlations in data
+5. **Model Selection & Training** – Compare multiple machine learning models for failure prediction
+6. **Model Performance Evaluation** – Assess accuracy, precision, recall, and F1-score
+7. **Performance Visualization** – Plot results to interpret model effectiveness
 
-•	product ID: consisting of a letter L, M, or H for low (50% of all products), medium (30%) and high (20%) as product quality variants and a variant-specific serial number
+## Conclusion
+This project aims to leverage machine learning to enhance predictive maintenance, reducing unexpected breakdowns and improving machine efficiency. By analyzing historical data, we can gain insights into failure patterns and take proactive measures to prevent downtime.
 
-•	air temperature [K]: generated using a random walk process later normalized to a standard deviation of 2 K around 300 K
+## License
+This project is for educational and research purposes only. Refer to the dataset source for licensing details.
 
-•	process temperature [K]: generated using a random walk process normalized to a standard deviation of 1 K, added to the air temperature plus 10 K.
+---
 
-•	rotational speed [rpm]: calculated from a power of 2860 W, overlaid with a normally distributed noise
+### Contributors
+- [tejashwini-vemavarapu]
 
-•	torque [Nm]: torque values are normally distributed around 40 Nm with a Ïƒ = 10 Nm and no negative values.
+For any inquiries or contributions, feel free to reach out.
 
-•	tool wear [min]: The quality variants H/M/L add 5/3/2 minutes of tool wear to the used tool in the process.
-
-•	'machine failure' label: indicates whether the machine has failed in this particular datapoint.
-
-# The machine failure consists of five independent failure modes:
-•	tool wear failure (TWF): the tool will be replaced of fail at a randomly selected tool wear time between 200 – 240 mins (120 times in our dataset).
-  At this point in time, the tool is replaced 69 times, and fails 51 times (randomly assigned).
-
-•	heat dissipation failure (HDF): heat dissipation causes a process failure, if the difference between air- and process temperature is below 8.6 K and the tool’s rotational speed is below 1380 rpm. This is the case for 115 data points.
-
-•	power failure (PWF): the product of torque and rotational speed (in rad/s) equals the power required for the process. If this power is below 3500 W or above 9000 W, the process fails, which is the case 95 times in our dataset.
-
-•	overstrain failure (OSF): if the product of tool wear and torque exceeds 11,000 minNm for the L product variant (12,000 M, 13,000 H), the process fails due to overstrain. This is true for 98 datapoints.
-
-•	random failures (RNF): each process has a chance of 0,1 % to fail regardless of its process parameters. This is the case for only 5 datapoints, less than could be expected for 10,000 datapoints in our dataset.
-
-If at least one of the above failure modes is true, the process fails and the 'machine failure' label is set to 1. It is therefore not transparent to the machine learning method, which of the failure modes has caused the process to fail.
-
-# Methodology
-Data collection
-
-Data exploration, visualization, and processing
-
-Dimension reduction and variable selection
-
-Exploratory Data Analysis
-
-Model exploration and model selection
-
-Model performance evaluation
-
-Performance visualization
- 
