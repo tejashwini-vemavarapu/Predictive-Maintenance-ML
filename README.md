@@ -11,7 +11,7 @@ This project aims to answer the following key questions through data analytics:
 
 ## Data Sources
 The dataset used in this project is provided by Stephan Matzka, School of Engineering - Technology and Life, Hochschule für Technik und Wirtschaft Berlin. It is publicly available at:
-[AI4I 2020 Predictive Maintenance Dataset](https://archive.ics.uci.edu/ml/datasets/AI4I+2020+Predictive+Maintenance+Dataset)
+[AI4I 2020 Predictive Maintenance Dataset](https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset)
 
 ## Data Description
 The dataset consists of 10,000 records with 14 features, including:
