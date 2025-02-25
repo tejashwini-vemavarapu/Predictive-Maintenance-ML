@@ -11,7 +11,7 @@ This project aims to answer the following key questions through data analytics:
 
 ## Data Sources
 The dataset used in this project is provided by Stephan Matzka, School of Engineering - Technology and Life, Hochschule für Technik und Wirtschaft Berlin. It is publicly available at:
-[AI4I 2020 Predictive Maintenance Dataset](https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset)
+[AI4I 2020 Predictive Maintenance Dataset](https://archive.ics.uci.edu/ml/datasets/AI4I+2020+Predictive+Maintenance+Dataset#)
 
 ## Data Description
 The dataset consists of 10,000 records with 14 features, including:
@@ -48,12 +48,29 @@ The following steps outline the project workflow:
 This project aims to leverage machine learning to enhance predictive maintenance, reducing unexpected breakdowns and improving machine efficiency. By analyzing historical data, we can gain insights into failure patterns and take proactive measures to prevent downtime.
 
 ## License
-This project is for educational and research purposes only. Refer to the dataset source for licensing details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
----
+The dataset used in this project is publicly available under its respective license at the UCI Machine Learning Repository. Please refer to the dataset source for licensing details.
 
-### Contributors
-- [tejashwini-vemavarapu]
+## Contributors
+- **tejashwini-vemavarapu**
 
 For any inquiries or contributions, feel free to reach out.
 
+---
+
+### How to Use This Repository
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/Predictive-Machinery-Analysis-ML.git
+   cd Predictive-Machinery-Analysis-ML
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run Jupyter Notebook:
+   ```bash
+   jupyter notebook
+   ```
+4. Open and explore the notebooks for data analysis and model building.
